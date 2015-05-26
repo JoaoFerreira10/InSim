@@ -1,0 +1,94 @@
+{
+    "attributeData": [
+        {
+            "valueDataObj": {
+                "illustrationID": "InvestmentPlan1",
+                "illustrationName": "InvestmentPlan",
+                "illustrationStatus": "Active",
+                "producerNumber": "business",
+                "ContractBO": [
+                    {
+                        "PackageBO": [
+                            {
+                                "RoleBO": [
+                                    {
+                                        "PartyBO": [
+                                            {
+                                                "IndividualBO": {
+                                                    "firstName": "",
+                                                    "lastName": "",
+                                                    "dateOfBirth": "478483200000"
+                                                },
+                                                "partyId": "1",
+                                                "externPartyId": "1"
+                                            }
+                                        ],
+                                        "participantType": "LifeParticipant",
+                                        "order": "1"
+                                    }
+                                ],
+                                "packageType": "InvestmentPlanPackage",
+                                "isSelected": true,
+                                "packageId": "1",
+                                "PremiumComponentBO": [
+                                    {
+                                        "PremiumDetailBO": {
+                                            "amount": ""
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "contractStatus": "WIP",
+                        "productType": "InvestmentPlan",
+                        "contractName": "",
+                        "effectiveDate": 1427155200000,
+                        "PropertyBO": [
+                            null,
+                            null,
+                            null,
+                            {
+                                "PeriodicPremiumIncrement": 0
+                            },
+                            {
+                                "Duration": "8"
+                            },
+                            {
+                                "InitialPremium": 5000
+                            },
+                            {
+                                "ProductPaymentFrequency": "Monthly"
+                            },
+                            {
+                                "PeriodicPremium": 25
+                            },
+                            {
+                                "Indexation": 0
+                            }
+                        ],
+                        "quoteId": "1",
+                        "currency": "USD",
+                        "PremiumComponentBO": [
+                            {
+                                "PremiumDetailBO": [
+                                    {
+                                        "amount": ""
+                                    },
+                                    {
+                                        "amount": ""
+                                    },
+                                    {
+                                        "amount": ""
+                                    },
+                                    {
+                                        "amount": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+} 

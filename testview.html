@@ -1,0 +1,219 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+     //   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" type="text/javascript"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="models/attributeData.js"></script>
+    <!--    <script src="js/facebookdata.js"></script> -->
+    <!--    <script src="js/msg.js"></script> -->
+     <!--   <script src="js/facebook.js"></script> -->
+        <script src="js/jquery.js"></script>
+    </head>
+<body>
+<script type="text/template" id="template">
+    <div id="top" class="row">
+        <img src="http://i.imgur.com/6T0USlZ.png">
+    </div>
+
+    <div class="row">
+
+        <div class="col-xs-1 col-sm-1 col-lg-1"></div>
+        <div class="col-xs-10 col-sm-8 col-lg-8">
+
+            <div id="title" class="row">InSim</div>
+
+            <div id="content" class="row">
+
+                <div id="form" class="row">
+
+                    <form>
+                        <div class="col-sm-6 col-md-6 col-lg-6 form-group">
+                            <div class="form-group">
+                                <img id="foto" class="img-thumbnail" src="">
+                                <input type="text" id="nome_completo" class="form-control">
+                                <input type="text" id="firstname" class="form-control" placeholder="Nome">
+                                <input type="text" id="lastName" class="form-control" placeholder="Sobrenome">
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6 form-group">
+                            <!-- 		<div class="col-xs-12 col-sm-10 col-lg-8" > -->
+                            <!-- 	 					<div class="form-group">
+                                                         <input type="text" class="form-control" placeholder="Localidade" >
+                                                     </div> -->
+                            <div class="form-group">
+                                <input id="dateOfBirth" type="date" class="form-control" placeholder="Data de nascimento" value="dateOfBirth" >
+                            </div>
+                            <div class="form-group styleArrow">
+                                <select id="ProductPaymentFrequency" class="drop" value="ProductPaymentFrequency">
+                                    <option value = "null">Frequência de pagamento</option>
+                                    <option value = "mensal">Pagamento mensal</option>
+                                    <option value = "semestral">Pagamento semestral</option>
+                                    <option value = "anual">Pagamento anual</option>
+                                </select>
+                            </div>
+                            <div class="form-group styleArrow">
+                                <select id ="Duration"  class="drop" value="Duration">
+                                    <option value = "null">Duração</option>
+                                    <option value = "1">1 ano</option>
+                                    <option value = "2">2 ano</option>
+                                    <option value = "3">3 ano</option>
+                                </select>
+                            </div>
+                            <div class="form-group styleArrow">
+                                <select class="drop" id ="produto" value="productType">
+                                    <option value = "null">Produto</option>
+                                    <option value = "vida">Vida</option>
+                                    <option value = "2">Automóvel</option>
+                                    <option value = "3">Viagem</option>
+                                </select>
+                            </div>
+                            <div class="form-group styleArrow">
+                                <input  id="PeriodicPremiumIncrement" type="number" class="form-control" value="PeriodicPremiumIncrement" placeholder="PeriodicPremiumIncrement">
+                            </div>
+                            <div class="form-group styleArrow">
+                                <input  id="InitialPremium" type="number" class="form-control" value="InitialPremium" placeholder="Capital a investir">
+                            </div>
+                            <div class="form-group styleArrow">
+                                <input  id="PeriodicPremium" type="number" class="form-control" value="PeriodicPremium" placeholder="PeriodicPremium">
+                            </div>
+                            <div class="form-group styleArrow">
+                                <input  id="Indexation" type="number" class="form-control" value="Indexation" placeholder="Indexation">
+                            </div>
+                            <input type="submit" value="Calculate" class="btn btn-submit" onclick="Calculate();">
+                            <!--  </div> -->
+                        </div>
+                    </form>
+
+                </div>
+
+                <div id="resultado" class="row">
+                    <h5>O seu seguro anual será de:</h5>
+			<span class="valor">380,00€<span>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs-1 col-sm-2 col-lg-2"></div>
+
+    </div>
+
+</script>
+
+<div id="sim_form"></div>
+
+<script type="text/javascript">
+    var atributeDataModel = new AttributeData();
+    var valueDataObjModel;
+    var individualModel;
+    var propertyModel;
+
+    SearchView = Backbone.View.extend({
+        initialize: function(){
+            _.bindAll(this, "changed");
+            this.render();
+        },
+        render: function(){
+            var template = _.template( $("#template").html(), {} );
+            this.$el.html( template );
+        },
+        events: {
+            "click input[type=submit]": "doSim",
+            "change input" :"changed",
+            "change select" :"changed"
+        },
+        changed:function(evt) {
+
+            var changed = evt.currentTarget;
+            var value = $(evt.currentTarget).val();
+
+            switch (changed.id)
+            {
+                case 'firstname':
+                {
+                    individualModel.setFirstName(value);
+                    alert("changed " + changed.id);
+                }
+                    break;
+
+                case 'lastName':
+                {
+                    individualModel.setLastName(value);
+                    alert("changed " + changed.id);
+                }
+                    break;
+
+                case 'dateOfBirth':
+                {
+                    individualModel.setDateOfBirth(value);
+                    alert("changed " + changed.id);
+                }
+                    break;
+
+                case 'InitialPremium':
+                {
+                    propertyModel.setInitialPremium(value);
+                    alert("changed " + changed.id);
+                    alert("changed ");
+
+                }
+                    break;
+
+                case 'ProductPaymentFrequency':
+                {
+                    propertyModel.setProductPaymentFrequency(value);
+                    alert("changed " + changed.id);
+                }
+                    break;
+
+
+                case 'PeriodicPremiumIncrement':
+                {
+                    propertyModel.setPeriodicPremiumIncrement(value);
+                    alert("changed " + changed.id);
+                }
+                    break;
+
+                case 'Duration':
+                {
+                    propertyModel.setDuration(value);
+                    alert("changed " + changed.id);
+                }
+                    break;
+
+                case 'PeriodicPremium':
+                {
+                    propertyModel.setPeriodicPremium(value);
+                    alert("changed " + changed.id);
+                }
+                    break;
+
+                case 'Indexation':
+                {
+                    propertyModel.setIndexation(value);
+                    alert("changed " + changed.id);
+                }
+                    break;
+
+                default:
+                    alert('Default case');
+                    break;
+            }
+        },
+
+        doSim: function( event ){
+            // Button clicked, you can access the element that was clicked with event.currentTarget
+            alert("submited model" );
+          // alert(JSON.stringify(model.get("attributeData")));
+        }
+    });
+
+    var search_view = new SearchView({ el: $("#sim_form") });
+</script>
+</body>
+</html>
