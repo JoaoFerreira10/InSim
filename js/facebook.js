@@ -12,21 +12,21 @@
 function onLogin(response) {
   if (response.status == 'connected') {
     FB.api('/me?fields=first_name', function(data) {     
-      var TextValue = document.getElementById('nome');
+      var TextValue = document.getElementById('firstname');
       TextValue.value=data.first_name;
       // var nome = document.createTextNode(data.first_name);     // Create a text node
       // TextValue.appendChild(nome);
     });
 
     FB.api('/me?fields=last_name', function(data) {     
-      var TextValue2 = document.getElementById('sobrenome');
+      var TextValue2 = document.getElementById('lastName');
       TextValue2.value=data.last_name;
   //     var sobrenome = document.createTextNode(data.last_name);     // Create a text node
   // TextValue2.appendChild(sobrenome);
     });
 
     FB.api('/me?fields=name', function(data) {     
-      var TextValue = document.getElementById('nome_completo');
+      var TextValue = document.getElementById('fullname');
       TextValue.value=data.name;
       // var nome = document.createTextNode(data.first_name);     // Create a text node
       // TextValue.appendChild(nome);

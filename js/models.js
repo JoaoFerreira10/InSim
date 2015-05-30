@@ -155,4 +155,5 @@ getIlustration("4715", function(i) {
 // Quando se carregar no botao
 getCalculate({sessionId: }, function (data) {
     var price = data;
+    alert(price);
 });

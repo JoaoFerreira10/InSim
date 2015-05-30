@@ -1,20 +1,24 @@
 .content{
 	
 	/*padding: 30px;*/
-	border:2px solid #8A133A;
+	border:2px solid #99DBB4;
 }
 
 
 #resultado{
 	text-align: center;
-    margin: 10px auto 10px auto; 
+    /*margin: 10px auto 10px auto; */
 	vertical-align: middle;
+	font-family: 'Montserrat', sans-serif;
 	/*display: none; */
 }
 
-/*#top{
-	padding-bottom: 60px;
-}*/
+#resultado span{
+
+	padding: 5px;
+}
+
+
 
 #top img{
 	float: right;
@@ -25,39 +29,68 @@
 }
 
 .valor{
-	color:#8A133A;
+	color:#99DBB4;
 	text-align: center;
-	font-size: 300%;
+	font-size: 500%;
 }
 
 body{
-	border-bottom: 1px solid #8A133A;
+/*	border-bottom: 1px solid #99DBB4;*/
 	background-image: url("../images/ffff.png");
 	background-size: cover;
 	background-repeat: no-repeat;
+	padding: 0px;
 }
 
 #title{
-	font-size: 450%;
+	font-size: 300%;
 	font-family: 'Montserrat', sans-serif;
-	background-color:#8A133A; 
-	height: 100px;
-	border-radius:5px;
+	background-color:#99DBB4; 
+	padding: 8px 0 8px 0;
 	color: white;
 	padding-left: 5%;
 }
 
-#form{
-	padding: 15px;
+#title span{
+
+	color:black;
+	font-size: 50%;
+	/*padding-bottom: 5px;*/
+	/*vertical-align: center;*/
 
 }
+
+#content{
+	background-color: #E6E7E8;
+	height: 100%;
+	opacity: 0.90;
+  	filter: alpha(opacity=90);
+}
+
+#form{
+	margin: 0px;
+	padding-top: 80px;
+	
+}
+
+#fullname{
+	background-color:#99DBB4; 
+	text-align: center;
+	
+}
+#firstname, #lastName, #PeriodicPremiumIncrement, #PeriodicPremium, #Indexation{
+	display: none;
+}
+
+
 
 #form input{
 	margin:0px;
 	background-color: #373B44;
-	border-radius: 5px;
 	color: white;
 	font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+
 }
 
 .form-group{
@@ -71,11 +104,6 @@ body{
 	margin-bottom: 5px;
 }
 
-#content{
-	background-color: #E6E7E8;
-	border-radius: 5px;
-	margin-bottom: 10px;
-}
 
 #top + div.row{
 	margin-top: 0%;
@@ -84,17 +112,19 @@ body{
 
 .drop{
 	min-width: 80%;
-	min-height: 80%;
-	width: 100%;
-	height: 100%;
+	width: 100%;	
 	background-color: #373B44;
 	border-radius: 5px;
 	color: white;
 	font-size: 20px;
 }
 
+#InitialPremium{
+	min-height: 6%;
+}
+
 .btn-submit{
-	background-color: #8A133A !important;
+	background-color: #99DBB4 !important;
 }
 
 #nome, #sobrenome{

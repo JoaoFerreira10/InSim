@@ -1,16 +1,3 @@
-function Calculate(){
-  var nome =document.getElementById('nome').value;
-  var sobrenome =document.getElementById('sobrenome').value;
-  var aniversario=document.getElementById('aniversario').value;
-  var pagamento=document.getElementById('pagamento').value;
-  var duracao=document.getElementById('duracao').value;
-  var capital=document.getElementById('capital').value;
-
-  alert(sobrenome);
-      // var data= JSON.stringify({});
-}
-
-
 //get session id 
 function getSession(callback){
     console.log("entered get session");
@@ -45,7 +32,6 @@ function getProducts(session,callback){
         data: { sessionid: session },
         dataType: "json",
         success: function (result) {
-            console.log("sucess");
             callback(result);
            // getIlustration(result.containerDefinition.businessObjectDefinitions.name);
         },
@@ -63,16 +49,16 @@ function getProducts(session,callback){
 function getIlustration(product,callback){
         $.ajax({
             ///illustration/definition?
+
         url: "http://www.mocky.io/v2/555df4939a6cd3510dcb6328",
         type: "GET",
         data: {  
        // productid: product,
-        agencyId : product,    
+        agencyId : product
        // sessionid: session       
          },
         dataType: "json",
         success: function (result) {
-            console.log("getting illustration for product");
             console.log("sucess");
             callback(result);
  
@@ -84,46 +70,45 @@ function getIlustration(product,callback){
     });
 };
 
-function getSimulation(data){
-    $.ajax({
-        url: "/contract/74/calculate?",
+function getSimulation(calculate,callback){
+    // var obj = jQuery.parseJSON(x);
+    console.log(calculate);
+
+   var x = JSON.stringify(calculate);
+
+
+
+
+     $.ajax({
+
+        url: "calculate.json",
         type: "POST",
-        data: { "session": {},
-                "containerDefinition": {
-                    "businessObjectDefinitions": [ ] },
-                    "attributeData": [
-                {   "valueDataObj": { "ContractBO": [ {
-                    "paymentMode": "",
-                    "quoteId": "70",
-                    "PropertyBO": [],
-                    "endDate": "",
-                    "AdjustmentBO": [],
-                    "contractStatus": "WIP",
-                    "productType": "TCMP",
-                    "currency": "",
-                    "RoleBO": [],
-                    "RateComponentBO": [],
-                    "PackageBO": [],
-                    "effectiveDate": "1375391084718",
-                    "contractName": "Quote 1",
-                    "PremiumComponentBO": [ ],
-                    "paymentMethod": "" }
-                ]
-                }}]
-                },   
+        data: x,
         dataType: "json",
         success: function (result) {
-            switch (result) {
-                case true:               
-                    console.log("sim");                          
-                    break;
-                default:
-            }
+
+            var x= JSON.stringify(result.attributeData[0].valueDataObj.ContractBO[0].PremiumComponentBO[0].PremiumDetailBO[0].amount);
+            callback(result);
+            x =parseFloat(x).toFixed(2);
+            showValue(x);
+        },
+        complete: function (result) {
+
+            callback(result);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-        alert(xhr.status);
-        alert(thrownError);
+            console.log("error");
+            alert(xhr.status);
+            alert(thrownError);
         }
     });
+};
+
+function showValue(value){
+
+    $('#resultado span').css({"border": "5px solid white"});
+    $('#resultado span').text(value +" €");
+
+
 };
 

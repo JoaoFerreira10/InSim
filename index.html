@@ -3,38 +3,39 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/bootstrap.css">
-     //   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" type="text/javascript"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js"></script>
         <script src="models/attributeData.js"></script>
     <!--    <script src="js/facebookdata.js"></script> -->
-    <!--    <script src="js/msg.js"></script> -->
-     <!--   <script src="js/facebook.js"></script> -->
-        <script src="js/jquery.js"></script>
+       <script src="js/msg.js"></script>
+       <script src="js/facebook.js">
+       </script> 
+       <!-- <script src="js/jquery.js"></script> -->
     </head>
 <body>
 <script type="text/template" id="template">
     <div id="top" class="row">
-        <img src="http://i.imgur.com/6T0USlZ.png">
+      <!--  -->
     </div>
 
     <div class="row">
 
-        <div class="col-xs-1 col-sm-1 col-lg-1"></div>
+        <div class="col-xs-0 col-sm-2 col-lg-2"></div>
         <div class="col-xs-10 col-sm-8 col-lg-8">
 
-            <div id="title" class="row">InSim</div>
+            <div id="title" class="row">InSim | <span>  by msg life iberia</span></div>
 
             <div id="content" class="row">
 
                 <div id="form" class="row">
 
                     <form>
-                        <div class="col-sm-6 col-md-6 col-lg-6 form-group">
+                        <div class="col-sm-5 col-md-4 col-lg-4 form-group">
                             <div class="form-group">
-                                <img id="foto" class="img-thumbnail" src="">
-                                <input type="text" id="nome_completo" class="form-control">
+                                <img id="foto" class="img-circle" src="">
+                                <input type="text" id="fullname" class="form-control">
                                 <input type="text" id="firstname" class="form-control" placeholder="Nome">
                                 <input type="text" id="lastName" class="form-control" placeholder="Sobrenome">
 
@@ -50,10 +51,18 @@
                                 <input id="dateOfBirth" type="date" class="form-control" placeholder="Data de nascimento" value="dateOfBirth" >
                             </div>
                             <div class="form-group styleArrow">
+                                <select class="drop" id ="produto" value="productType">
+                                    <option value = "null">Produto</option>
+                                    <option value = "vida">Seguro de vida</option>
+                                    <option value = "2">Seguro automóvel</option>
+                                    <option value = "3">Seguro de viagem</option>
+                                </select>
+                            </div>
+                            <div class="form-group styleArrow">
                                 <select id="ProductPaymentFrequency" class="drop" value="ProductPaymentFrequency">
                                     <option value = "null">Frequência de pagamento</option>
-                                    <option value = "mensal">Pagamento mensal</option>
-                                    <option value = "semestral">Pagamento semestral</option>
+                                    <option value = "monthly">Pagamento mensal</option>
+                                    <option value = "weekly">Pagamento semestral</option>
                                     <option value = "anual">Pagamento anual</option>
                                 </select>
                             </div>
@@ -61,23 +70,15 @@
                                 <select id ="Duration"  class="drop" value="Duration">
                                     <option value = "null">Duração</option>
                                     <option value = "1">1 ano</option>
-                                    <option value = "2">2 ano</option>
-                                    <option value = "3">3 ano</option>
-                                </select>
-                            </div>
-                            <div class="form-group styleArrow">
-                                <select class="drop" id ="produto" value="productType">
-                                    <option value = "null">Produto</option>
-                                    <option value = "vida">Vida</option>
-                                    <option value = "2">Automóvel</option>
-                                    <option value = "3">Viagem</option>
+                                    <option value = "2">2 anos</option>
+                                    <option value = "3">3 anos</option>
                                 </select>
                             </div>
                             <div class="form-group styleArrow">
                                 <input  id="PeriodicPremiumIncrement" type="number" class="form-control" value="PeriodicPremiumIncrement" placeholder="PeriodicPremiumIncrement">
                             </div>
                             <div class="form-group styleArrow">
-                                <input  id="InitialPremium" type="number" class="form-control" value="InitialPremium" placeholder="Capital a investir">
+                                <input  id="InitialPremium" type="number" class="form-control" value="InitialPremium" min="0" placeholder="Capital a investir">
                             </div>
                             <div class="form-group styleArrow">
                                 <input  id="PeriodicPremium" type="number" class="form-control" value="PeriodicPremium" placeholder="PeriodicPremium">
@@ -85,7 +86,7 @@
                             <div class="form-group styleArrow">
                                 <input  id="Indexation" type="number" class="form-control" value="Indexation" placeholder="Indexation">
                             </div>
-                            <input type="submit" value="Calculate" class="btn btn-submit" onclick="Calculate();">
+                            <input type="submit" value="Calculate" class="btn btn-submit" >
                             <!--  </div> -->
                         </div>
                     </form>
@@ -93,14 +94,15 @@
                 </div>
 
                 <div id="resultado" class="row">
-                    <h5>O seu seguro anual será de:</h5>
-			<span class="valor">380,00€<span>
+                    <h5>O seu seguro será de:</h5>
+		        	<span class="valor"> <span></span> </span>
                 </div>
 
             </div>
         </div>
-        <div class="col-xs-1 col-sm-2 col-lg-2"></div>
-
+        <div class="col-xs-2 col-sm-2 col-lg-2">
+                <img class="img-responsive" src="http://i.imgur.com/VjVd9Gm.png?1">
+        </div>
     </div>
 
 </script>
@@ -108,10 +110,12 @@
 <div id="sim_form"></div>
 
 <script type="text/javascript">
-    var atributeDataModel = new AttributeData();
+    var calculateDataModel = new CalculateData();
+    var atributeDataModel;
     var valueDataObjModel;
-    var individualModel;
+    var individualModel;// = new IndividualBO();
     var propertyModel;
+
 
     SearchView = Backbone.View.extend({
         initialize: function(){
@@ -137,29 +141,28 @@
                 case 'firstname':
                 {
                     individualModel.setFirstName(value);
-                    alert("changed " + changed.id);
+                //    alert("changed " + changed.id);
                 }
                     break;
 
                 case 'lastName':
                 {
                     individualModel.setLastName(value);
-                    alert("changed " + changed.id);
+                 //   alert("changed " + changed.id);
                 }
                     break;
 
                 case 'dateOfBirth':
                 {
                     individualModel.setDateOfBirth(value);
-                    alert("changed " + changed.id);
+               //     alert("changed " + changed.id);
                 }
                     break;
 
                 case 'InitialPremium':
                 {
                     propertyModel.setInitialPremium(value);
-                    alert("changed " + changed.id);
-                    alert("changed ");
+               //     alert("changed " + changed.id);
 
                 }
                     break;
@@ -167,7 +170,7 @@
                 case 'ProductPaymentFrequency':
                 {
                     propertyModel.setProductPaymentFrequency(value);
-                    alert("changed " + changed.id);
+                  //  alert("changed " + changed.id);
                 }
                     break;
 
@@ -175,41 +178,94 @@
                 case 'PeriodicPremiumIncrement':
                 {
                     propertyModel.setPeriodicPremiumIncrement(value);
-                    alert("changed " + changed.id);
+                 //   alert("changed " + changed.id);
                 }
                     break;
 
                 case 'Duration':
                 {
                     propertyModel.setDuration(value);
-                    alert("changed " + changed.id);
+                 //   alert("changed " + changed.id);
                 }
                     break;
 
                 case 'PeriodicPremium':
                 {
                     propertyModel.setPeriodicPremium(value);
-                    alert("changed " + changed.id);
+                   // alert("changed " + changed.id);
                 }
                     break;
 
                 case 'Indexation':
                 {
                     propertyModel.setIndexation(value);
-                    alert("changed " + changed.id);
+                  //  alert("changed " + changed.id);
                 }
                     break;
 
                 default:
-                    alert('Default case');
+                 //   alert('Default case');
                     break;
-            }
+            }   
         },
 
         doSim: function( event ){
+            event.preventDefault();
             // Button clicked, you can access the element that was clicked with event.currentTarget
-            alert("submited model" );
-          // alert(JSON.stringify(model.get("attributeData")));
+
+            var fn = document.getElementById("firstname").value;
+            individualModel.setFirstName(fn);
+
+            var ln = document.getElementById("lastName").value;
+            individualModel.setLastName(ln);
+
+            var dob = document.getElementById("dateOfBirth").value;
+            individualModel.setDateOfBirth(dob);
+
+             var pf=document.getElementById("ProductPaymentFrequency").value;
+             propertyModel.setProductPaymentFrequency(pf);
+
+
+             var du=document.getElementById("Duration").value;
+             propertyModel.setDuration(du);
+
+             var pi = document.getElementById("PeriodicPremiumIncrement").value;
+             propertyModel.setPeriodicPremiumIncrement(pi);
+
+
+            var ip=document.getElementById("InitialPremium").value;
+            propertyModel.setInitialPremium(ip);
+
+
+            var pp=document.getElementById("PeriodicPremium").value;
+            propertyModel.setPeriodicPremium(pp);
+
+            var ind =document.getElementById("Indexation").value;
+            propertyModel.setIndexation(ind);
+
+           // alert(JSON.stringify(propertyModel));
+           // console.log(ind);
+
+            var data2 = JSON.stringify(calculateDataModel);
+            
+            // console.log("session:" );
+            // console.log(data2.);
+
+            var test={"session":{"sessionID" : "MTQyNzE4OTE5MjIxNDo4MGM3ZDBiZTMzZjIyYWYzZTRiMTcwMGVlN2ViNDcxMmYwNTEzMmNlZTRiYzBiNTg3OWQxMmNlYjk5MmE1MmY2ODRmNzk1NzkzMTA5YjA0MDY1OTU5YWNmZDg4YjY5MGEwOGQ5MGE0ODU3YzRmYzAzZjk4MGJiNzY5MGVkYTQ4YjVkMmUwMTdjNzlmYTdhYzA2MGU2YmUzNzRlMmQwYmRhNjA3NTc4NTA1YjRiNGZhNDQ2ODllYzVkZjRiOTBiNjE3NzI3YjE5MDcyYTBjYjBhYzM1MGI2MTM0NzA1ZWVmNWFhOTJlNDJmZjcwMDNhZGUzZjg1NjVmYTY2N2ExYWI2ZWM5NDEzZjk5MmIwYTQyNGJiZWZkZjg2YzdhYzViMTM2ZTU5YThiYzE2NTMwZTk4MWMxZTRiMTM4Njc2OTA0YTQzYzBhM2M2OTM3NTE3Mzg0MzFjYTMzNGZkNmU0NWE5YzQxY2E1NjBiOTU0MzhiYTdlNDRkYWM4N2JiNDcwMzcxOGY4ZDk3ZjE2OGM0M2U1Y2Q3ODA4MGQ0NzFiZTUwODI5ZjQ3M2YwNzdhYjFhOWQwMTMyNjU3YWY5ODE4ZTc5ZjVkYzhiNmNlYTRkZGEzMzM3MzE2MjI5ZTdjNDc1ZmI2ODY4NWJkMGIzODM4N2U5MjM2NGIxYjI0NDVlY2JkMzpyZXMtYXBpLTE0MjcxODkxOTIyMTQ6OTk0MTkwYTAxYTQzY2RhZTZkM2JhMzZmZjFhNzBmODNiNmJjMTA3MjFkNTlmYjY5YzE2ZGRlMGIyMTczZjk3OWNmYjdhM2Q0OTJjYWFiZDZjMDY0ZGQwMTMwZTQwZGEzMmQwY2YwNWNlNjkyMjA1N2M3MTk4MWQwNGY0ZGJhMm"}};
+
+
+            getSimulation(data2, function (data) {
+                var price = data;
+               // console.log(price);
+
+            });
+
+
+
+
+           // alert(JSON.stringify(calculateDataModel));
+           // alert(JSON.stringify(individualModel));
+
         }
     });
 
